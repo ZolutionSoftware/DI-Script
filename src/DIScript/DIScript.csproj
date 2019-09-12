@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Antlr4ToolPath>$(SolutionDir)bin\antlr-4.7.2-complete.jar</Antlr4ToolPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Antlr4 Include="DIScript.g4">
+      <CustomToolNamespace>DIScript</CustomToolNamespace>
+    </Antlr4>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antlr4BuildTasks" Version="1.0.7" />
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.7.2" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="SET Antlr4BuildTasks=$(SolutionDir)bin" />
+  </Target>
+  
+</Project>
